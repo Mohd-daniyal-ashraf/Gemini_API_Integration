@@ -1,9 +1,15 @@
-import React from 'react'
+import "./App.css";
+import React from "react";
+import Sidebar from "./components/sidebar/Sidebar";
+import Main from "./components/main/Main";
 
 function App() {
   return (
-    <div>App</div>
-  )
+    <>
+      <Sidebar />
+      <Main />
+    </>
+  );
 }
 
-export default App
+export default App;
