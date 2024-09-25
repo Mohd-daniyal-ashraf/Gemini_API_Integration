@@ -16,9 +16,10 @@ const ContextProvider = (props) => {
     setLoading(true);
     setShowResult(true);
     setRecentPrompt(input);
+    setPrevPrompt((prev) => [...prev, input]);
 
     const responce = await run(input);
-    
+
     console.log(responce);
     setResultData(responce);
     setLoading(false);

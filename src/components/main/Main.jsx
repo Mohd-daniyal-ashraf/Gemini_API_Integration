@@ -1,8 +1,10 @@
 import "./Main.css";
-import React, { useContext } from "react";
+import React, { useContext, useRef, useEffect } from "react";
 import { assets } from "../../assets/assets";
 import conf from "../../Conf/Conf";
 import { Context } from "../../Context/Context";
+import Typed from "typed.js"; // Import the Typed.js library
+import useTyped from "../useTyped";
 function Main() {
   const {
     onSend,
@@ -13,6 +15,10 @@ function Main() {
     loading,
     resultData,
   } = useContext(Context);
+
+  // use typing hook
+  const typedElement = useTyped();
+
   return (
     <div className="main">
       <div className="nav">
@@ -55,7 +61,15 @@ function Main() {
             </div>
             <div className="result-data">
               <img src={assets.gemini_icon} alt="" />
-              <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+              {loading ? (
+                <div className="loader">
+                  <hr />
+                  <hr />
+                  <hr />
+                </div>
+              ) : (
+                <p ref={typedElement}></p>
+              )}
             </div>
           </div>
         )}
