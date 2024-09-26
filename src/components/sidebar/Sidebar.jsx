@@ -5,7 +5,7 @@ import { Context } from "../../Context/Context";
 
 function Sidebar() {
   const [extended, setExtended] = useState(false);
-  const { prevPrompt } = useContext(Context);
+  const { prevPrompt, } = useContext(Context);
 
   return (
     <div className="sidebar">
@@ -23,19 +23,12 @@ function Sidebar() {
         {extended ? (
           <div className="recent">
             <p className="recent-title">Recent</p>
-            {Array.isArray(prevPrompt) && prevPrompt.length > 0 ? (
-              prevPrompt.map((item, index) => (
-                <div
-                  key={index}
-                  className="recent-entry"
-                >
-                  <img src={assets.message_icon} alt="message_icon" />
-                  <p>{item}</p>
-                </div>
-              ))
-            ) : (
-              <p>No recent prompts</p>
-            )}
+            {prevPrompt.map((item,index) => (
+              <div key={index} className="recent-entry">
+                <img src={assets.message_icon} alt="message_icon" />
+                <p>{item.slice(0,18)}...</p>
+              </div>
+            ))}
           </div>
         ) : null}
       </div>

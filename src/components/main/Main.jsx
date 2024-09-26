@@ -17,7 +17,7 @@ function Main() {
   } = useContext(Context);
 
   // use typing hook
-  const typedElement = useTyped();
+  // const typedElement = useTyped();
 
   return (
     <div className="main">

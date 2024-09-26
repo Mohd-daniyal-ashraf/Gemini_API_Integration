@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import run from "../config/Gemini";
+import { split } from "postcss/lib/list";
 
 export const Context = createContext();
 
@@ -10,7 +11,7 @@ const ContextProvider = (props) => {
   const [showResult, setShowResult] = useState(false);
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState("");
-
+  const deplayPara = (index, nextword) => {};
   const onSend = async (prompt) => {
     setResultData("");
     setLoading(true);
@@ -19,9 +20,19 @@ const ContextProvider = (props) => {
     setPrevPrompt((prev) => [...prev, input]);
 
     const response = await run(input);
+    let newresponce = response.split("**");
+    let newArray ="";
+    for (let i = 1; i < newresponce.length; i++) {
+      if (i === 0 || i % 2 !== 1) {
+        newArray += newresponce[i];
+      } else {
+        newArray += "<b>" + newresponce[i] + "</b>";
+      }
+    }
+    newArray = newArray.split("*").join("</br>")
 
     console.log(response);
-    setResultData(response);
+    setResultData(newArray);
     setLoading(false);
     setInput("");
   };
