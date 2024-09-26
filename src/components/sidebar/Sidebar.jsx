@@ -25,7 +25,10 @@ function Sidebar() {
             <p className="recent-title">Recent</p>
             {Array.isArray(prevPrompt) && prevPrompt.length > 0 ? (
               prevPrompt.map((item, index) => (
-                <div key={index} className="recent-entry">
+                <div
+                  key={index}
+                  className="recent-entry"
+                >
                   <img src={assets.message_icon} alt="message_icon" />
                   <p>{item}</p>
                 </div>

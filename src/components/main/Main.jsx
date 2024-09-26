@@ -68,7 +68,7 @@ function Main() {
                   <hr />
                 </div>
               ) : (
-                <p ref={typedElement}></p>
+                <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
               )}
             </div>
           </div>

@@ -18,10 +18,10 @@ const ContextProvider = (props) => {
     setRecentPrompt(input);
     setPrevPrompt((prev) => [...prev, input]);
 
-    const responce = await run(input);
+    const response = await run(input);
 
-    console.log(responce);
-    setResultData(responce);
+    console.log(response);
+    setResultData(response);
     setLoading(false);
     setInput("");
   };

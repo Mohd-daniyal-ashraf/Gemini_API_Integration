@@ -10,7 +10,7 @@ const useTyped = () => {
     if (typedElement.current && resultData) {
       const typed = new Typed(typedElement.current, {
         strings: [resultData],
-        typeSpeed: 8,
+        typeSpeed:.00001,
         showCursor: false,
       });
 

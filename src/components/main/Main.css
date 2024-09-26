@@ -179,3 +179,37 @@
     background-position: 800px 0px;
   }
 }
+
+
+.response-container h2 {
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.response-container p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.response-container b {
+  font-weight: lighter;
+}
+
+.response-container ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+pre{
+  background-color: #1e1f20;
+  color: white;
+  padding: 1rem 2rem 1rem;
+}
+
+code{
+  background-color: rgb(203, 200, 200);
+  padding: 2.4px 10px;
+  border-radius: .25rem;
+  height: 20px;
+}
