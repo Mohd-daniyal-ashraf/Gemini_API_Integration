@@ -11,28 +11,37 @@ const ContextProvider = (props) => {
   const [showResult, setShowResult] = useState(false);
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState("");
-  const deplayPara = (index, nextword) => {};
+
+  const newChat = () => {
+    setLoading(false);
+    setShowResult(false);
+  };
+
   const onSend = async (prompt) => {
     setResultData("");
     setLoading(true);
     setShowResult(true);
-    setRecentPrompt(input);
-    setPrevPrompt((prev) => [...prev, input]);
-
-    const response = await run(input);
-    let newresponce = response.split("**");
-    let newArray ="";
-    for (let i = 1; i < newresponce.length; i++) {
-      if (i === 0 || i % 2 !== 1) {
-        newArray += newresponce[i];
-      } else {
-        newArray += "<b>" + newresponce[i] + "</b>";
-      }
+    let response = "";
+    if (prompt !== undefined) {
+      response = await run(prompt);
+      setRecentPrompt(prompt);
+    } else {
+      setPrevPrompt((prev) => [...prev, input]);
+      setRecentPrompt(input);
+      response = await run(input);
     }
-    newArray = newArray.split("*").join("</br>")
+
+    const parsedResponse = response
+      .replace(/##\s(.+)/g, "<h2>$1</h2>") // Convert headings
+      .replace(/\*\*(.+?)\*\*/g, "<b>$1</b>") // Convert bold text
+      .replace(/- (.+)/g, "<li>$1</li>") // Convert list items
+      .replace(/```(\w+)\n([\s\S]+?)```/g, "<pre>$2</pre>") // Convert code blocks
+      .replace(/`(.*?)`/g, "<code>$1</code>") // Convert code blocks
+      .replace(/\n/g, "<br>") // Replace new lines with <br>
+      .replace(/\* /g, "➡ ");
 
     console.log(response);
-    setResultData(newArray);
+    setResultData(parsedResponse);
     setLoading(false);
     setInput("");
   };
@@ -51,6 +60,7 @@ const ContextProvider = (props) => {
     resultData,
     setResultData,
     onSend,
+    newChat,
   };
   return (
     <Context.Provider value={contextValue}>{props.children}</Context.Provider>

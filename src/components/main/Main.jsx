@@ -1,10 +1,9 @@
 import "./Main.css";
 import React, { useContext, useRef, useEffect } from "react";
 import { assets } from "../../assets/assets";
-import conf from "../../Conf/Conf";
 import { Context } from "../../Context/Context";
-import Typed from "typed.js"; // Import the Typed.js library
-import useTyped from "../useTyped";
+import Typed from "typed.js";
+
 function Main() {
   const {
     onSend,
@@ -16,8 +15,22 @@ function Main() {
     resultData,
   } = useContext(Context);
 
-  // use typing hook
-  // const typedElement = useTyped();
+  const typedElement = useRef();
+
+  useEffect(() => {
+    if (typedElement.current && resultData) {
+      const typed = new Typed(typedElement.current, {
+        strings: [resultData],
+        typeSpeed: 1,
+        backSpeed: 1,
+        showCursor: false,
+      });
+
+      return () => {
+        typed.destroy();
+      };
+    }
+  }, [resultData]);
 
   return (
     <div className="main">
@@ -32,7 +45,7 @@ function Main() {
               <p>
                 <span>Hello, Dev.</span>
               </p>
-              <p>How can i help you today?</p>
+              <p>How can I help you today?</p>
             </div>
             <div className="cards">
               <div className="card">
@@ -68,7 +81,10 @@ function Main() {
                   <hr />
                 </div>
               ) : (
-                <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+                <p
+                  ref={typedElement} // Attach ref to the element
+                  className="gemini-response"
+                ></p>
               )}
             </div>
           </div>
