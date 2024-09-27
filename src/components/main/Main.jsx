@@ -13,6 +13,8 @@ function Main() {
     showResult,
     loading,
     resultData,
+    setRecentPrompt,
+    setPrevPrompt,
   } = useContext(Context);
 
   const typedElement = useRef();
@@ -32,6 +34,12 @@ function Main() {
     }
   }, [resultData]);
 
+  const loadePrompt = async (prompt) => {
+    setPrevPrompt((prev) => [...prev, prompt]);
+    setRecentPrompt(prompt);
+    await onSend(prompt);
+  };
+
   return (
     <div className="main">
       <div className="nav">
@@ -48,19 +56,43 @@ function Main() {
               <p>How can I help you today?</p>
             </div>
             <div className="cards">
-              <div className="card">
+              <div
+                className="card"
+                onClick={() =>
+                  loadePrompt(
+                    "Suggest beautiful places to see on an upcoming road trip"
+                  )
+                }
+              >
                 <p>Suggest beautiful places to see on an upcoming road trip</p>
                 <img src={assets.compass_icon} alt="" />
               </div>
-              <div className="card">
+              <div
+                className="card"
+                onClick={() =>
+                  loadePrompt("Briefly summarize this concept: urban planning")
+                }
+              >
                 <p>Briefly summarize this concept: urban planning</p>
                 <img src={assets.bulb_icon} alt="" />
               </div>
-              <div className="card">
+              <div
+                className="card"
+                onClick={() =>
+                  loadePrompt(
+                    "Brainstorm team bonding activities for our work retreat"
+                  )
+                }
+              >
                 <p>Brainstorm team bonding activities for our work retreat</p>
                 <img src={assets.message_icon} alt="" />
               </div>
-              <div className="card">
+              <div
+                className="card"
+                onClick={() =>
+                  loadePrompt("Tell me about React js and React native")
+                }
+              >
                 <p>Tell me about React js and React native</p>
                 <img src={assets.code_icon} alt="" />
               </div>
@@ -101,11 +133,14 @@ function Main() {
             <div>
               <img src={assets.gallery_icon} alt="gallery_icon" />
               <img src={assets.mic_icon} alt="mic_icon" />
-              <img
-                onClick={() => onSend()}
-                src={assets.send_icon}
-                alt="send_icon"
-              />
+              {input ? (
+                <img
+                  onClick={() => onSend()}
+                  src={assets.send_icon}
+                  alt="send_icon"
+                  className="send_img"
+                />
+              ) : null}
             </div>
           </div>
           <div className="bottom-info">

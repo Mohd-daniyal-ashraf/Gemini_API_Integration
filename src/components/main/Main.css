@@ -200,11 +200,15 @@ pre {
   font-weight: 400;
   border-radius: 5px;
   overflow-wrap: anywhere;
-  white-space: pre-wrap; /* Wrap long lines */
-  word-break: break-word; /* Break words when necessary */
-  max-width: 100%; /* Ensure the content doesn't overflow */
-  overflow-x: auto; /* Allow horizontal scrolling if necessary */
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-width: 100%; 
+  overflow-x: auto; 
   box-sizing: border-box;
+}
+
+.send_img{
+  animation: fadin 1s ease-in;
 }
 
 @media (max-width: 600px) {
