@@ -4,18 +4,19 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: #f0f4f9;
-  padding: 25px 15px;
+  padding: 25px 10px;
   transform: .3s;
 }
 
 .sidebar img {
-  width: 20px;
+  width: 18px;
 }
 
 .sidebar .menu {
   display: flex;
-  margin-left: 10px;
+  margin-left: 15px;
   cursor: pointer;
+  width: 20px;
 }
 
 .sidebar .new-chat {
@@ -29,6 +30,7 @@
   font-size: 14px;
   color: grey;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .sidebar .recent {

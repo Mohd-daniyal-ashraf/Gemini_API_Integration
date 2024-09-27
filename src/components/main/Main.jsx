@@ -105,7 +105,11 @@ function Main() {
               <p>{recentPrompt}</p>
             </div>
             <div className="result-data">
-              <img src={assets.gemini_icon} alt="" />
+              <img
+                src={assets.gemini_icon}
+                alt=""
+                className={loading ? "rotate" : ""}
+              />
               {loading ? (
                 <div className="loader">
                   <hr />
@@ -113,10 +117,7 @@ function Main() {
                   <hr />
                 </div>
               ) : (
-                <p
-                  ref={typedElement} // Attach ref to the element
-                  className="gemini-response"
-                ></p>
+                <p ref={typedElement} className="gemini-response"></p>
               )}
             </div>
           </div>
@@ -145,7 +146,9 @@ function Main() {
           </div>
           <div className="bottom-info">
             Gemini may display inaccurate info, including about people, so
-            double-check its responses. Your privacy and Gemini Apps
+            double-check its responses. Your privacy and Gemini Apps. <br />
+            Build By{" "}
+            <a href="https://github.com/Mohd-daniyal-ashraf">Daniyal</a>
           </div>
         </div>
       </div>

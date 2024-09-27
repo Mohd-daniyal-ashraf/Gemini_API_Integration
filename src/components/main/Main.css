@@ -25,7 +25,7 @@
 }
 
 .main .great {
-  margin: 50px 0px;
+  margin: 18px 0 3.52px;
   font-size: 56px;
   color: #c4c7c5;
   font-weight: 500;
@@ -52,7 +52,6 @@
   border-radius: 10px;
   position: relative;
   cursor: pointer;
-  transition: 0.15s;
 }
 
 .main .card img {
@@ -79,7 +78,7 @@
   bottom: 0;
   width: 100%;
   max-width: 900px;
-  padding: 0px 20px;
+  padding: 0px 23px;
   margin: auto;
 }
 
@@ -110,14 +109,20 @@
 .search-box div {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 17px;
 }
 
 .main .bottom-info {
-  font-size: 15px;
-  margin: 15px auto;
+  font-size: 12px;
+  margin: 12px auto;
+  margin-bottom: 10px;
   text-align: center;
   font-weight: 300;
+}
+
+.bottom-info a {
+  color: black;
+  font-size: 14px;
 }
 
 .result {
@@ -142,6 +147,20 @@
   border-radius: 50%;
 }
 
+.result .rotate {
+  animation: rotate 1s ease-in-out infinite;
+}
+@keyframes rotate {
+  0% {
+    transform: scale(1);
+    transform: rotate(50deg);
+  }
+  100% {
+    transform: rotate(130deg);
+    transform: scale(1.43);
+  }
+}
+
 .result-data {
   display: flex;
   align-items: start;
@@ -149,9 +168,10 @@
 }
 
 .result-data p {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 300;
   line-height: 1.8;
+  margin-bottom: 2rem;
 }
 
 .loader {
@@ -187,7 +207,7 @@ code {
 
 .gemini-response h2 {
   margin-top: 0;
-  font-size: 2rem;
+  font-size: 1.7rem;
   color: rgb(0, 0, 0);
   margin: 0;
   padding: 0;
@@ -202,28 +222,28 @@ pre {
   overflow-wrap: anywhere;
   white-space: pre-wrap;
   word-break: break-word;
-  max-width: 100%; 
-  overflow-x: auto; 
+  max-width: 100%;
+  overflow-x: auto;
   box-sizing: border-box;
 }
 
-.send_img{
-  animation: fadin 1s ease-in;
+.send_img {
+  animation: fadin 0.6s ease-in;
 }
 
 @media (max-width: 600px) {
-  .main-bottom input {
-    flex: none;
-    width: 150px;
-  }
   .main-bottom img {
     width: 20px;
   }
   .search-box {
-    padding: 5px 10px;
+    padding: 10px 14px;
   }
 
   .search-box div {
-    gap: 5px;
+    gap: 13px;
   }
+}
+
+html {
+  max-height: 100vh;
 }
