@@ -139,7 +139,7 @@
   margin: 40px 0px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
 }
 
 .result img {
@@ -164,7 +164,7 @@
 .result-data {
   display: flex;
   align-items: start;
-  gap: 20px;
+  gap: 10px;
 }
 
 .result-data p {
@@ -241,6 +241,10 @@ pre {
 
   .search-box div {
     gap: 13px;
+  }
+
+  .result{
+    padding: 0px 3%;
   }
 }
 
