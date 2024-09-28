@@ -4,8 +4,14 @@ import { assets } from "../../assets/assets";
 import { Context } from "../../Context/Context";
 
 function Sidebar() {
-  const [extended, setExtended] = useState(false);
-  const { prevPrompt, setRecentPrompt, onSend, newChat } = useContext(Context);
+  const {
+    prevPrompt,
+    setRecentPrompt,
+    onSend,
+    newChat,
+    extended,
+    setExtended,
+  } = useContext(Context);
   const loadePrompt = async (prompt) => {
     setRecentPrompt(prompt);
     await onSend(prompt);

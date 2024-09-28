@@ -11,6 +11,7 @@ const ContextProvider = (props) => {
   const [showResult, setShowResult] = useState(false);
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState("");
+  const [extended, setExtended] = useState(false);
 
   const newChat = () => {
     setLoading(false);
@@ -61,6 +62,8 @@ const ContextProvider = (props) => {
     setResultData,
     onSend,
     newChat,
+    extended,
+    setExtended,
   };
   return (
     <Context.Provider value={contextValue}>{props.children}</Context.Provider>

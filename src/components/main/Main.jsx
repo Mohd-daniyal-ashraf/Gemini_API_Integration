@@ -15,6 +15,8 @@ function Main() {
     resultData,
     setRecentPrompt,
     setPrevPrompt,
+    setExtended,
+    extended
   } = useContext(Context);
 
   const typedElement = useRef();
@@ -43,7 +45,14 @@ function Main() {
   return (
     <div className="main">
       <div className="nav">
-        <p>Gemini</p>
+        <p>
+          <img
+            src={assets.menu_icon}
+            onClick={() => setExtended((prev) => !prev)}
+            alt="menu_icon"
+          />
+          Gemini
+        </p>
         <img src={assets.user_icon} alt="user_icon" />
       </div>
       <div className="main-container">

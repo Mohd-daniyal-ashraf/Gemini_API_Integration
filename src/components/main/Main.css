@@ -10,8 +10,22 @@
   align-items: center;
   justify-content: space-between;
   font-size: 22px;
-  padding: 20px;
+  padding: 10px 20px 10px;
   color: #585858;
+}
+
+.nav p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav p img {
+  display: none !important;
+  all: initial;
+  width: 22px !important;
+  margin-right: 10px;
+  cursor: pointer;
 }
 
 .main .nav img {
@@ -243,8 +257,12 @@ pre {
     gap: 13px;
   }
 
-  .result{
+  .result {
     padding: 0px 3%;
+  }
+
+  .nav p img{
+    display: flex !important;
   }
 }
 
