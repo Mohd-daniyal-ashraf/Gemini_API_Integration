@@ -12,11 +12,14 @@
   width: 18px;
 }
 
-.sidebar .menu {
-  display: flex;
-  margin-left: 15px;
-  cursor: pointer;
+.menu {
+  position: absolute;
+  top: 21.6px;
+  left: 25px;
   width: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .sidebar .new-chat {
@@ -74,5 +77,11 @@
 @media (max-width: 600px) {
   .sidebar{
     display: none;
+    position: absolute;
+    top: 0;
   }
+  .menu{
+    left: 20px;
+  }
+ 
 }

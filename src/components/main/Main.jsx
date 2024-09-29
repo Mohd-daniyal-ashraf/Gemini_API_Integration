@@ -46,11 +46,6 @@ function Main() {
     <div className="main">
       <div className="nav">
         <p>
-          <img
-            src={assets.menu_icon}
-            onClick={() => setExtended((prev) => !prev)}
-            alt="menu_icon"
-          />
           Gemini
         </p>
         <img src={assets.user_icon} alt="user_icon" />
