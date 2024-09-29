@@ -1,6 +1,5 @@
 import { createContext, useState } from "react";
 import run from "../config/Gemini";
-import { split } from "postcss/lib/list";
 
 export const Context = createContext();
 
