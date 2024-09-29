@@ -20,14 +20,6 @@
   align-items: center;
 }
 
-/* .nav p img {
-  display: none !important;
-  all: initial;
-  width: 22px !important;
-  margin-right: 10px;
-  cursor: pointer;
-} */
-
 .main .nav img {
   width: 40px;
   border-radius: 50%;
