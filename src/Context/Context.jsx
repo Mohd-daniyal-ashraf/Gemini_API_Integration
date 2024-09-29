@@ -38,7 +38,7 @@ const ContextProvider = (props) => {
       .replace(/```(\w+)\n([\s\S]+?)```/g, "<pre>$2</pre>") // Convert code blocks
       .replace(/`(.*?)`/g, "<code>$1</code>") // Convert code blocks
       .replace(/\n/g, "<br>") // Replace new lines with <br>
-      .replace(/\* /g, "➡ ");
+      .replace(/\* /g, "➡ "); // Add symbol
 
     console.log(response);
     setResultData(parsedResponse);
