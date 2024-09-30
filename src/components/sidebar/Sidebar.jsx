@@ -18,14 +18,14 @@ function Sidebar() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen" style={{minHeight:"100vh",display: "inline-flex"}}>
+    <div className="sidebar-container">
       <img
         src={assets.menu_icon}
         onClick={() => setExtended((prev) => !prev)}
         alt="menu_icon"
-        className="menu"
+        className="menu z-100"
       />
-      <div className="sidebar">
+      <div className={`sidebar ${extended ? "extended" : ""}`}>
         <div className="top">
           <div className="new-chat" onClick={() => newChat()}>
             <img src={assets.plus_icon} alt="plus_icon" />

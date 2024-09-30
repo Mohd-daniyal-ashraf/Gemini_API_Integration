@@ -44,8 +44,8 @@ function Main() {
 
   return (
     <div className="main">
-      <div className="nav">
-        <p>
+      <div className="nav" >
+        <p className="z-i00">
           Gemini
         </p>
         <img src={assets.user_icon} alt="user_icon" />
