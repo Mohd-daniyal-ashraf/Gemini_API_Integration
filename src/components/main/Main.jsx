@@ -1,5 +1,4 @@
 import "./Main.css";
-import "../BottomMenu"
 import React, { useContext, useRef, useEffect } from "react";
 import { assets } from "../../assets/assets";
 import { Context } from "../../Context/Context";

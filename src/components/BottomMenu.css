@@ -1,3 +1,13 @@
-div{
-    background-color: aqua;
+.container {
+  display: flex;
+  gap: 1rem;
+  padding: 0 0 1rem;
+}
+
+.container box-icon {
+  cursor: pointer;
+}
+
+.like:hover{
+  opacity: .4;
 }
