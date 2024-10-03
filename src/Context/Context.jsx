@@ -40,6 +40,7 @@ const ContextProvider = (props) => {
       .replace(/\n/g, "<br>") // Replace new lines with <br>
       .replace(/\* /g, "➡ "); // Add symbol
 
+    // parsedResponse += "<p>End of respose</p>"
     console.log(response);
     setResultData(parsedResponse);
     setLoading(false);

@@ -1,8 +1,10 @@
 import "./Main.css";
+import "../BottomMenu"
 import React, { useContext, useRef, useEffect } from "react";
 import { assets } from "../../assets/assets";
 import { Context } from "../../Context/Context";
 import Typed from "typed.js";
+import BottomMenu from "../BottomMenu";
 
 function Main() {
   const {
@@ -16,7 +18,7 @@ function Main() {
     setRecentPrompt,
     setPrevPrompt,
     setExtended,
-    extended
+    extended,
   } = useContext(Context);
 
   const typedElement = useRef();
@@ -44,10 +46,8 @@ function Main() {
 
   return (
     <div className="main">
-      <div className="nav" >
-        <p className="z-i00">
-          Gemini
-        </p>
+      <div className="nav">
+        <p className="z-i00">Gemini</p>
         <img src={assets.user_icon} alt="user_icon" />
       </div>
       <div className="main-container">
@@ -121,7 +121,10 @@ function Main() {
                   <hr />
                 </div>
               ) : (
-                <p ref={typedElement} className="gemini-response"></p>
+                <div>
+                  <p ref={typedElement} className="gemini-response"></p>
+                  <BottomMenu/>
+                </div>
               )}
             </div>
           </div>
