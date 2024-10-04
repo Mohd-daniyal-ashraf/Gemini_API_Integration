@@ -1,9 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./BottomMenu.css";
+import DownloadPDF from "./main/DownloadPDF";
+import { Context } from "../Context/Context";
 
-function BottomMenu() {
+function BottomMenu({ classname }) {
+  const { input, prevPrompt, currentPrompt } = useContext(Context);
   const [isLiked, setIsLiked] = useState(false);
   const [isdisLiked, setIsdisLiked] = useState(false);
+
+  const { handleDownload } = DownloadPDF({
+    selector: classname,
+    options: {
+      pageSize: "a4", // A4 page size
+      marginTop: 30, // Top margin
+      marginLeft: 30, // Left margin
+      marginBottom: 30, // Bottom margin
+      marginRight: 30, // Right margin
+      fileName: currentPrompt, // Custom file name
+      orientation: "p", // Portrait mode
+    },
+  });
 
   const handleLikeClick = () => {
     setIsLiked(!isLiked);
@@ -31,7 +47,12 @@ function BottomMenu() {
         onClick={handledisLikeClick}
       ></box-icon>
       <box-icon name="share-alt"></box-icon>
-      <box-icon type="solid" name="download"></box-icon>
+      <box-icon
+        type="solid"
+        name="download"
+        id="download-btn"
+        onClick={handleDownload}
+      ></box-icon>
     </div>
   );
 }

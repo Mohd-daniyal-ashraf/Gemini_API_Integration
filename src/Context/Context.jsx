@@ -11,6 +11,7 @@ const ContextProvider = (props) => {
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState("");
   const [extended, setExtended] = useState(false);
+  const [currentPrompt, setCurrentPrompt] = useState("");
 
   const newChat = () => {
     setLoading(false);
@@ -21,6 +22,8 @@ const ContextProvider = (props) => {
     setResultData("");
     setLoading(true);
     setShowResult(true);
+    setCurrentPrompt(input || prompt);
+
     let response = "";
     if (prompt !== undefined) {
       response = await run(prompt);
@@ -64,6 +67,8 @@ const ContextProvider = (props) => {
     newChat,
     extended,
     setExtended,
+    currentPrompt,
+    setCurrentPrompt,
   };
   return (
     <Context.Provider value={contextValue}>{props.children}</Context.Provider>

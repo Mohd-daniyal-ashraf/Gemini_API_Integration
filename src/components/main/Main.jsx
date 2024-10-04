@@ -122,7 +122,7 @@ function Main() {
               ) : (
                 <div>
                   <p ref={typedElement} className="gemini-response"></p>
-                  <BottomMenu/>
+                  <BottomMenu classname=".gemini-response" />
                 </div>
               )}
             </div>
