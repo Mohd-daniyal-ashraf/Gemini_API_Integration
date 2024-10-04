@@ -6,67 +6,85 @@ const DownloadPDF = ({ selector, options }) => {
   const handleDownload = () => {
     const element = document.querySelector(selector);
 
-    html2canvas(element, { scale: 2 }).then(function (canvas) {
-      // Get custom options or set default values
+    if (!element) {
+      console.error("Invalid selector: Element not found.");
+      return;
+    }
+
+    // First, capture the content using html2canvas
+    html2canvas(element, { scale: 2 }).then((canvas) => {
       const {
-        pageSize = "a4", // default is A4
+        pageSize = "a4", // default page size is A4
         marginTop = 30,
         marginLeft = 20,
-        marginBottom = 20,
-        marginRight = 30,
+        marginBottom = 30,
+        marginRight = 20,
         fileName = "multi-page-content.pdf",
         orientation = "p", // portrait ('p') or landscape ('l')
       } = options || {};
 
-      // Initialize jsPDF with custom page size and orientation
       const doc = new jsPDF(orientation, "pt", pageSize);
 
-      // Get the image data from the canvas
       const imgData = canvas.toDataURL("image/png");
 
-      // Calculate dimensions for the PDF
-      const pageWidth =
+      // Get the dimensions of the PDF page
+      const pdfPageWidth =
         doc.internal.pageSize.getWidth() - marginLeft - marginRight;
-      const pageHeight =
+      const pdfPageHeight =
         doc.internal.pageSize.getHeight() - marginTop - marginBottom;
+
+      // Calculate the scaling ratio
       const canvasWidth = canvas.width;
       const canvasHeight = canvas.height;
-      const ratio = Math.min(
-        pageWidth / canvasWidth,
-        pageHeight / canvasHeight
-      );
-      const imgHeight = canvasHeight * ratio;
-      const imgWidth = canvasWidth * ratio;
+      const ratio = canvasWidth / pdfPageWidth;
 
-      // Number of pages required to fit the entire content
-      const totalPages = Math.ceil(imgHeight / pageHeight);
+      const scaledCanvasHeight = canvasHeight / ratio;
 
-      for (let i = 0; i < totalPages; i++) {
-        // Add the image to the PDF
-        const srcY = (i * pageHeight) / ratio; // Y offset to start the next part of the image
-        const srcHeight = pageHeight / ratio;
+      let position = 0;
 
+      // Add each page to the PDF by slicing the canvas content
+      while (position < canvasHeight) {
+        const canvasPage = document.createElement("canvas");
+        canvasPage.width = canvasWidth;
+        canvasPage.height = Math.min(
+          canvasHeight - position,
+          pdfPageHeight * ratio
+        );
+
+        const ctx = canvasPage.getContext("2d");
+        ctx.drawImage(
+          canvas,
+          0,
+          position,
+          canvasWidth,
+          canvasPage.height,
+          0,
+          0,
+          canvasPage.width,
+          canvasPage.height
+        );
+
+        const imgDataPage = canvasPage.toDataURL("image/png");
+
+        // Add the canvas image to the PDF
         doc.addImage(
-          imgData,
+          imgDataPage,
           "PNG",
           marginLeft,
           marginTop,
-          imgWidth,
-          imgHeight,
-          undefined,
-          undefined,
-          undefined,
-          undefined,
-          srcY,
-          srcHeight
+          pdfPageWidth,
+          canvasPage.height / ratio // Add only the portion that fits within the PDF
         );
 
-        if (i < totalPages - 1) {
-          doc.addPage(); // Add a new page if more pages are needed
+        position += canvasPage.height;
+
+        // If there's more content, add a new page
+        if (position < canvasHeight) {
+          doc.addPage();
         }
       }
 
-      // Save the PDF with the custom file name
+      // Save the PDF
       doc.save(fileName);
     });
   };
