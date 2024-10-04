@@ -12,9 +12,9 @@ function BottomMenu({ classname }) {
     selector: classname,
     options: {
       pageSize: "a4", // A4 page size
-      marginTop: 30, // Top margin
-      marginLeft: 30, // Left margin
-      marginBottom: 30, // Bottom margin
+      marginTop: 40, // Top margin
+      marginLeft: 50, // Left margin
+      marginBottom: 40, // Bottom margin
       marginRight: 30, // Right margin
       fileName: currentPrompt, // Custom file name
       orientation: "p", // Portrait mode
