@@ -16,7 +16,7 @@ function BottomMenu({ classname }) {
       marginLeft: 50, // Left margin
       marginBottom: 40, // Bottom margin
       marginRight: 30, // Right margin
-      fileName: currentPrompt.split(" ").slice(0, 5).join(" "), // Custom file name
+      fileName: currentPrompt, // Custom file name
       orientation: "p", // Portrait mode
     },
   });
@@ -51,6 +51,7 @@ function BottomMenu({ classname }) {
         type="solid"
         name="download"
         id="download-btn"
+        animation="fade-down-hover"
         onClick={handleDownload}
       ></box-icon>
     </div>

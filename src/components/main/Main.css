@@ -42,7 +42,6 @@
   background: -webkit-linear-gradient(16deg, #4690ff, #ff5546);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: loader 5s infinite linear;
 }
 
 .main .cards {
