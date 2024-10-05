@@ -16,7 +16,7 @@ function BottomMenu({ classname }) {
       marginLeft: 50, // Left margin
       marginBottom: 40, // Bottom margin
       marginRight: 30, // Right margin
-      fileName: currentPrompt, // Custom file name
+      fileName: currentPrompt.split(" ").slice(0, 5).join(" "), // Custom file name
       orientation: "p", // Portrait mode
     },
   });

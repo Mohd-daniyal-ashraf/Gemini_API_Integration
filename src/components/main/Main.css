@@ -42,6 +42,7 @@
   background: -webkit-linear-gradient(16deg, #4690ff, #ff5546);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: loader 5s infinite linear;
 }
 
 .main .cards {
@@ -253,10 +254,10 @@ pre {
     padding: 0px 3%;
   }
 
-  .nav p img{
+  .nav p img {
     display: flex !important;
   }
-  .nav{
+  .nav {
     padding-left: 3.3rem !important;
   }
 }
