@@ -4,7 +4,7 @@ import DownloadPDF from "./main/DownloadPDF";
 import { Context } from "../Context/Context";
 
 function BottomMenu({ classname }) {
-  const { input, prevPrompt, currentPrompt } = useContext(Context);
+  const { currentPrompt } = useContext(Context);
   const [isLiked, setIsLiked] = useState(false);
   const [isdisLiked, setIsdisLiked] = useState(false);
 
@@ -16,7 +16,7 @@ function BottomMenu({ classname }) {
       marginLeft: 50, // Left margin
       marginBottom: 40, // Bottom margin
       marginRight: 30, // Right margin
-      fileName: currentPrompt, // Custom file name
+      fileName: currentPrompt.split(" ").slice(0,5).join(" "), // Custom file name
       orientation: "p", // Portrait mode
     },
   });
