@@ -11,7 +11,6 @@ const DownloadPDF = ({ selector, options }) => {
       return;
     }
 
-    // First, capture the content using html2canvas
     html2canvas(element, { scale: 2 }).then((canvas) => {
       const {
         pageSize = "a4", // default page size is A4
